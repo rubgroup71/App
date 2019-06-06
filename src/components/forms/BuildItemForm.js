@@ -408,11 +408,11 @@ makeQuestions=()=>{
             if (this.state.cancel) {
                 
             }
-            else if (this.state.progress<10)
+            else if (this.state.progress<this.state.Type.Stages)
                 {
                     this.setState({progress:this.state.progress+1})
                     
-                    if (this.state.progress<10)
+                    if (this.state.progress<this.state.Type.Stages)
                     {
                         
                         this.makeQuestions()
@@ -427,7 +427,7 @@ makeQuestions=()=>{
     }
 buttonChange=()=>{
     
-    if (this.state.progress===10) {
+    if (this.state.progress==this.state.Type.Stages) {
         return 'Add'
     }
     else if (this.state.start) {
@@ -452,10 +452,10 @@ buttonChange=()=>{
               <Progress
                         style={{marginTop:'5%'}}
                         value={this.state.progress} 
-                        total='10' 
+                        total={this.state.Type.Stages}
                         progress='ratio'
                         active
-                        success={this.state.progress===10?true:false}
+                        success={this.state.progress==this.state.Type.Stages?true:false}
                         warning={this.state.add.IsStandard?false:true}
                         >
                 </Progress>

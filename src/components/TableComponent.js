@@ -2,7 +2,7 @@ import React from 'react'
 import {Table} from 'semantic-ui-react'
 import {withRouter} from 'react-router-dom'
 function TableComponent (props) {
-      console.log(props)
+      
       const {location}=props
       
     if (location.pathname==='/builditem') {
