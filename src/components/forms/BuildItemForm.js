@@ -45,9 +45,37 @@ componentDidMount(){
     .then(res=>this.setState({categories:res.data}))
     .catch(()=>{
         swal('','something worng, try again','error');
-        this.props.history.goBack()}
-        )
+        this.props.history.goBack()
+    })
+    
+    
     // Add invalid to firebase
+    // var ppp
+    // var qqq
+    // Axios.get('http://proj.ruppin.ac.il/bgroup71/prod/api/AllItem?type=B&stages=4')
+    // .then(res=>ppp=res.data)
+    // .then(()=>{
+    //     Axios.get('http://proj.ruppin.ac.il/bgroup71/prod/api/Question?type=B')
+    //     .then(res=>qqq=res.data)
+    //     .then(()=>{
+            
+    //             for (const key in ppp) {
+    //                 console.log(key)
+    //                 ppp[key].forEach((opt,i) => {
+    //                     console.log(opt)
+    //                     firebase.firestore().collection('Binvalid'+key).doc(opt.ID).set({
+    //                         type:"",  
+    //                         size:"",
+    //                         fruit:"",
+    //                         base:"",
+                    
+    //                     })
+    //                 })
+    //             }
+    //     })
+    // })    
+
+
     // Parts.map(part=>{
         
     //     var options = part.options.map(x=>x.value)
@@ -68,14 +96,14 @@ componentDidMount(){
         
     // })
     
-    // swal({
-    //     content:(
-    //     <div>
-    //         <h1>How to build a item</h1>
-    //         <p>green is good the else is bad, good luck</p>
-    //         <p>lets go!!</p>
-    //     </div>)
-    // })
+    swal({
+        content:(
+        <div>
+            <h2>How to build a item</h2>
+            <h3>Green is good the else is bad</h3>
+            <p>Good luck :-)</p>
+        </div>)
+    })
     
 }
 componentDidUpdate(prevProps, prevState) {
@@ -192,10 +220,8 @@ isStandard=(id,value)=>{
    }
     
    if (this.state.add.IsStandard) {
-    if (id===1) {
-        return 'green'
-    }
-    else {
+    
+    
         // eslint-disable-next-line eqeqeq
         var tmp = this.state.tree.filter(p=>p.id==id)
         var tmp2 = tmp.find(p=>p.parent.test(this.state.value))
@@ -208,7 +234,7 @@ isStandard=(id,value)=>{
         else return 'yellow'
    }
    
-    }
+    
     else {
         if (!this.state.first) {
             var negative=this.state.negative.slice()
@@ -426,7 +452,7 @@ makeQuestions=()=>{
     
     }
 buttonChange=()=>{
-    
+    // eslint-disable-next-line
     if (this.state.progress==this.state.Type.Stages) {
         return 'Add'
     }
@@ -455,6 +481,7 @@ buttonChange=()=>{
                         total={this.state.Type.Stages}
                         progress='ratio'
                         active
+                        // eslint-disable-next-line
                         success={this.state.progress==this.state.Type.Stages?true:false}
                         warning={this.state.add.IsStandard?false:true}
                         >
